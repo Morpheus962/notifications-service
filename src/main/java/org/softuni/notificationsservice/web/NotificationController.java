@@ -76,4 +76,14 @@ public class NotificationController {
                 .status(HttpStatus.OK)
                 .body(responseDto);
     }
+
+    @DeleteMapping
+    public ResponseEntity<Void> clearNotifications(@RequestParam(name="userId") UUID userId){
+
+        notificationService.clearNotifications(userId);
+
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(null);
+    }
 }

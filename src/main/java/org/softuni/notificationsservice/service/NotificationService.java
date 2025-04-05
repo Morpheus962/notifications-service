@@ -101,4 +101,12 @@ public class NotificationService {
         notificationPreference.setNotificationEnabled(enabled);
         return notificationPreferenceRepository.save(notificationPreference);
     }
+
+    public void clearNotifications(UUID userId) {
+        List<Notification> notificationHistory = getNotificationHistory(userId);
+        notificationHistory.forEach(notification ->{
+            notification.setDeleted(true);
+            notificationRepository.save(notification);
+        });
+    }
 }
