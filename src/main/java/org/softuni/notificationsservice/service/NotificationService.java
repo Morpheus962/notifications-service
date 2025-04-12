@@ -62,7 +62,7 @@ public class NotificationService {
 
     public Notification sendNotification(NotificationRequest request) {
         UUID userId = request.getUserId();
-        NotificationPreference preference = getPreferenceByUserId(request.getUserId());
+        NotificationPreference preference = getPreferenceByUserId(userId);
         if (!preference.isNotificationEnabled()){
             throw new IllegalArgumentException("User with id %s does not allow to receive notifications.".formatted(userId));
         }
